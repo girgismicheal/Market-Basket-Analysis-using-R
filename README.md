@@ -72,4 +72,4 @@ inspect(association_rule_len2_sorted[1])
 ![Market-Basket-Analysis-Image](Image/Screenshot_6.png)
 ![Market-Basket-Analysis-Image](Image/Screenshot_7.png)
 
-As known the support and confidence are insufficient at filtering out uninteresting rules. so, the measure of the goodness of an association rule is the lift value. The higher lift the better rule.
+**Important Note:** As known the support and confidence are insufficient at filtering out uninteresting rules. so, the measure of the goodness of an association rule is the lift value. The higher lift the better rule.
