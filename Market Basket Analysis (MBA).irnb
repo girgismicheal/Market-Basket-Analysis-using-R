@@ -1,0 +1,75 @@
+
+```{r}
+# Install those packages at the first run
+# install.packages("arules")
+# install.packages("arulesViz")
+# install.packages("reader")
+
+library(readr)
+library(arules)
+library(arulesViz)
+library(RColorBrewer)
+```
+As the csv file has the transactions directly ,so i will use read transactions
+```{r}
+# read the transactional data
+transactions <- read.transactions("D:/Fandumental Datascience Assignment 2/transactions.csv", format = 'basket', sep = ',')
+inspect(head(transactions))
+```
+Look at the data summary
+```{r}
+summary(transactions)
+```
+
+Find the most 10 frequent transactions
+
+```{r}
+arules::itemFrequencyPlot(transactions, topN = 10,
+                          col = brewer.pal(8, 'Pastel2'),
+                          main = 'absolute Item Frequency Plot',
+                          type = "absolute",
+                          ylab = "Item Frequency (absolute)")
+```
+# Using apriori algorothm
+Generate the association rules using:
+- Minimum support of 0.002
+- Minimum confidence of 0.20
+- Maximum length of 3
+
+```{r}
+association_rule_len3 <- apriori(transactions,
+                 parameter = list(supp = 0.002, conf = 0.2,maxlen=3));
+```
+# Sort the rules descendingly by the lift value
+```{r}
+association_rule_len3_sorted <- sort(association_rule_len3, decreasing = TRUE, by = "lift")
+inspect(top.lift[1:10])
+```
+
+# Using apriori algorothm
+Generate the association rules using:
+- Minimum support of 0.002
+- Minimum confidence of 0.20
+- Maximum length of 2
+
+```{r}
+association_rule_len2 <- apriori(transactions,
+                 parameter = list(supp = 0.002, conf = 0.2,maxlen=2))
+```
+
+```{r}
+# Sort the rules descendingly by the lift value
+association_rule_len2_sorted <- sort(association_rule_len2, decreasing = TRUE, by = "lift")
+inspect(top.lift[1:10])
+```
+Compare the length 3 and 2 togther to select the best rule
+Print the highest rules of maxlen =3 and maxlen=2
+```{r}
+# Maxlen=3
+inspect(association_rule_len3_sorted[1])
+```
+
+```{r}
+# Maxlen = 2
+inspect(association_rule_len2_sorted[1])
+```
