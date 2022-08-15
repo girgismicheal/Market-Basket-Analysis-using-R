@@ -28,37 +28,36 @@ arules::itemFrequencyPlot(transactions, topN = 10,
 ![Market-Basket-Analysis-Image](Image/Screenshot_3.png)
 
 ### Using apriori algorothm
-- Generate the association rules using:
-  - Minimum support of 0.002
-  - Minimum confidence of 0.20
-  - Maximum length of 3
-```{r}
-association_rule_len3 <- apriori(transactions,
-                 parameter = list(supp = 0.002, conf = 0.2,maxlen=3));
-```
+> - Generate the association rules using:
+>   - Minimum support of 0.002
+>   - Minimum confidence of 0.20
+>   - Maximum length of 3
+> ```{r}
+> association_rule_len3 <- apriori(transactions,
+>                  parameter = list(supp = 0.002, conf = 0.2,maxlen=3));
+> ```
+**Sort the rules descendingly by the lift value**
+> ```{r}
+> association_rule_len3_sorted <- sort(association_rule_len3, decreasing = TRUE, by = "lift")
+> inspect(top.lift[1:10])
+> ```
+> ![Market-Basket-Analysis-Image](Image/Screenshot_4.png)
 
-### Sort the rules descendingly by the lift value
-```{r}
-association_rule_len3_sorted <- sort(association_rule_len3, decreasing = TRUE, by = "lift")
-inspect(top.lift[1:10])
-```
-![Market-Basket-Analysis-Image](Image/Screenshot_4.png)
-
-- Generate the association rules using:
-  - Minimum support of 0.002
-  - Minimum confidence of 0.20
-  - Maximum length of 2
-
-```{r}
-association_rule_len2 <- apriori(transactions,
-                 parameter = list(supp = 0.002, conf = 0.2,maxlen=2))
-```
-```{r}
-# Sort the rules descendingly by the lift value
-association_rule_len2_sorted <- sort(association_rule_len2, decreasing = TRUE, by = "lift")
-inspect(top.lift[1:10])
-```
-![Market-Basket-Analysis-Image](Image/Screenshot_5.png)
+> - Generate the association rules using:
+>   - Minimum support of 0.002
+>   - Minimum confidence of 0.20
+>   - Maximum length of 2
+> 
+> ```{r}
+> association_rule_len2 <- apriori(transactions,
+>                  parameter = list(supp = 0.002, conf = 0.2,maxlen=2))
+> ```
+> ```{r}
+> # Sort the rules descendingly by the lift value
+> association_rule_len2_sorted <- sort(association_rule_len2, decreasing = TRUE, by = "lift")
+> inspect(top.lift[1:10])
+> ```
+> ![Market-Basket-Analysis-Image](Image/Screenshot_5.png)
 
 ### Compare the length 3 and 2 togther to select the best rule
 The highest lift rules of maxlen =3 and maxlen=2
