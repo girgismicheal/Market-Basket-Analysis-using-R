@@ -39,7 +39,7 @@ arules::itemFrequencyPlot(transactions, topN = 10,
 **Sort the rules descendingly by the lift value**
 > ```{r}
 > association_rule_len3_sorted <- sort(association_rule_len3, decreasing = TRUE, by = "lift")
-> inspect(top.lift[1:10])
+> inspect(association_rule_len3_sorted[1:10])
 > ```
 > ![Market-Basket-Analysis-Image](Image/Screenshot_4.png)
 
@@ -55,7 +55,7 @@ arules::itemFrequencyPlot(transactions, topN = 10,
 > ```{r}
 > # Sort the rules descendingly by the lift value
 > association_rule_len2_sorted <- sort(association_rule_len2, decreasing = TRUE, by = "lift")
-> inspect(top.lift[1:10])
+> inspect(association_rule_len2_sorted[1:10])
 > ```
 > ![Market-Basket-Analysis-Image](Image/Screenshot_5.png)
 
