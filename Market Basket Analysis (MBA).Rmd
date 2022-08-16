@@ -43,7 +43,7 @@ association_rule_len3 <- apriori(transactions,
 # Sort the rules descendingly by the lift value
 ```{r}
 association_rule_len3_sorted <- sort(association_rule_len3, decreasing = TRUE, by = "lift")
-inspect(top.lift[1:10])
+inspect(association_rule_len3_sorted[1:10])
 ```
 
 # Using apriori algorothm
@@ -60,7 +60,7 @@ association_rule_len2 <- apriori(transactions,
 ```{r}
 # Sort the rules descendingly by the lift value
 association_rule_len2_sorted <- sort(association_rule_len2, decreasing = TRUE, by = "lift")
-inspect(top.lift[1:10])
+inspect(association_rule_len2_sorted[1:10])
 ```
 Compare the length 3 and 2 togther to select the best rule
 Print the highest rules of maxlen =3 and maxlen=2
